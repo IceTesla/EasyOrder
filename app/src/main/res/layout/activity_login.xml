@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="icetesla.cn.easyorder.Activity.LoginActivity">
+
+    <ImageView
+        android:id="@+id/icon_login"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ic_launcher"
+        android:layout_marginTop="100dp"/>
+
+    <EditText
+        android:id="@+id/text_login_ID"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/icon_login"
+        android:layout_marginTop="100dp"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:theme="@style/MyEditText"
+        android:hint="请输入帐号"
+        android:textColorHint="@color/gray"
+        android:maxLines="1" />
+
+    <EditText
+        android:id="@+id/text_login_Password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_login_ID"
+        android:layout_marginTop="20dp"
+        android:textCursorDrawable="@drawable/color_cursor"
+        android:theme="@style/MyEditText"
+        android:hint="密码"
+        android:textColorHint="@color/gray"
+        android:ems="10"
+        android:inputType="textPassword"/>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/text_login_Password"
+        android:layout_marginTop="60dp"
+        android:text="登陆"
+        android:clickable="false"
+        android:background="@drawable/btn_login_normal"
+        android:textColor="@color/white"/>
+</RelativeLayout>
