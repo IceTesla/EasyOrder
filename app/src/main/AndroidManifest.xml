@@ -8,14 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name="cn.IceTesla.easyorder.Activity.LoginActivity">
+        <activity android:name=".Activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.IceTesla.easyorder.Activity.ShopcartActivity"></activity>
+        <activity android:name=".Activity.ShopcartActivity"></activity>
     </application>
 
 </manifest>
