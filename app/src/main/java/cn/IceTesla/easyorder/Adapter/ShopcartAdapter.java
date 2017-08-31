@@ -1,11 +1,11 @@
-package icetesla.cn.easyorder.Adapter;
+package cn.IceTesla.easyorder.Adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 /**
- * Created by Administrator on 2017/8/30.
+ * Created by IceTesla on 2017/8/30.
  */
 
 public class ShopcartAdapter extends BaseAdapter

@@ -1,4 +1,4 @@
-package icetesla.cn.easyorder.Activity;
+package cn.IceTesla.easyorder.Activity;
 
 import android.os.Handler;
 import android.os.Message;
@@ -7,17 +7,20 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import icetesla.cn.easyorder.R;
+import cn.IceTesla.easyorder.R;
+
+/**
+ * Created by IceTesla on 2017/8/29.
+ */
 
 public class LoginActivity extends AppCompatActivity {
     private static final int Status_Wait = 900;
     private static final int Status_Ready = 901;
+    private static final int Status_Login = 902;
 
     private ImageView icon_login;
     private TextView text_login_ID;
@@ -37,6 +40,9 @@ public class LoginActivity extends AppCompatActivity {
                 case Status_Wait:
                     btn_login.setBackground(getDrawable(R.drawable.btn_login_normal));
                     btn_login.setClickable(false);
+                    break;
+                //登陆网络请求处理
+                case Status_Login:
                     break;
             }
         }
@@ -88,7 +94,9 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
+                Message msg=mHandler.obtainMessage();
+                msg.what= Status_Login;
+                mHandler.sendMessage(msg);
             }
         });
     }
