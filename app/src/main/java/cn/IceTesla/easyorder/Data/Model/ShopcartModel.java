@@ -14,8 +14,18 @@ public class ShopcartModel implements Serializable {
     private int good;
     private int price;
     private int number;
+    private String note;
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
 
     public String getName() {
+
         return name;
     }
 

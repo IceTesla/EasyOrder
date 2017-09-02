@@ -28,7 +28,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView text_login_Password;
     private Button btn_login;
 
-
     private Handler mHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -103,5 +102,6 @@ public class LoginActivity extends AppCompatActivity {
                 LoginActivity.this.startActivity(intent);
             }
         });
+        btn_login.setClickable(false);
     }
 }

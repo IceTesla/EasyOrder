@@ -1,12 +1,16 @@
 package cn.IceTesla.easyorder.Activity;
 
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,18 +34,18 @@ import cn.IceTesla.easyorder.View.RefreshView;
 public class ShopcartActivity extends AppCompatActivity {
     private RefreshView refreshView;
     private ListView listView;
-    private TextView back,title,edit;
-    private ImageView reduce,plus;
+    private TextView back, title, edit;
+    private ImageView reduce, plus;
     private List<ShopcartModel> mList = new ArrayList<>();
     private NetRequest requestFragment;
     private ShopcartAdapter adapter;
     private static final int Status_Refresh = 903;
 
-    private Handler mHandler = new Handler(){
+    private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            switch (msg.what){
+            switch (msg.what) {
                 case Status_Refresh:
                     adapter.refresh(mList);
                     adapter.notifyDataSetChanged();
@@ -50,39 +54,41 @@ public class ShopcartActivity extends AppCompatActivity {
             }
         }
     };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopcart);
 
-        back= (TextView) findViewById(R.id.toolbar_back);
+        back = (TextView) findViewById(R.id.toolbar_back);
         back.setText("＜返回");
-        back.setOnClickListener(new View.OnClickListener(){
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 finish();
             }
         });
 
-        title=(TextView)findViewById(R.id.toolbar_title);
+        title = (TextView) findViewById(R.id.toolbar_title);
         title.setText("订单");
 
         refreshView = (RefreshView) findViewById(R.id.shopcart_swiperefresh_layout);
-        listView = (ListView)findViewById(R.id.shopcart_list);
+        listView = (ListView) findViewById(R.id.shopcart_list);
 
-        adapter = new ShopcartAdapter(this,mList);
+        adapter = new ShopcartAdapter(this, mList);
         listView.setAdapter(adapter);
 
         reduce = (ImageView) findViewById(R.id.btn_item_shopcart_number_reduce);
 
         plus = (ImageView) findViewById(R.id.btn_item_shopcart_number_plus);
+
         //requestFragment = new NetRequest(this,this);
 
         mList = new ArrayList<>();
-        for(int i =0;i<5;i++) {
+        for (int i = 0; i < 3; i++) {
             ShopcartModel companion = new ShopcartModel();
             companion.setGood(20);
-            companion.setName("北京烤鸭"+mList.size());
+            companion.setName("北京烤鸭" + mList.size());
             companion.setNumber(3);
             companion.setPrice(40);
             companion.setSale(12);
@@ -112,24 +118,24 @@ public class ShopcartActivity extends AppCompatActivity {
 
     }
 
-    private void doRefresh(){
+    private void doRefresh() {
 //        Map<String, Object> map = new HashMap<>();
 //        map.put("type",Status_Refresh);
 //        requestFragment.httpRequest(map, CommonUrl.companionList);
 
-        ShopcartModel companion = new ShopcartModel();
-        for(int i =0;i<5;i++) {
-            companion.setName("北京烤鸭" + mList.size());
-            companion.setSale(12);
-            companion.setGood(20);
-            companion.setNumber(3);
-            companion.setPrice(40);
 
-            mList.add(companion);
-        }
-        Message msg=mHandler.obtainMessage();
-        msg.what= Status_Refresh;
+        ShopcartModel companion = new ShopcartModel();
+        companion.setName("北京烤鸭" + mList.size());
+        companion.setSale(12);
+        companion.setGood(20);
+        companion.setNumber(3);
+        companion.setPrice(40);
+
+        mList.add(companion);
+        Message msg = mHandler.obtainMessage();
+        msg.what = Status_Refresh;
         mHandler.sendMessage(msg);
 
     }
+
 }
