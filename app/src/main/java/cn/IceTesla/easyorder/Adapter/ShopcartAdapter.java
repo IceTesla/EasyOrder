@@ -20,8 +20,7 @@ import cn.IceTesla.easyorder.R;
  * Created by IceTesla on 2017/8/30.
  */
 
-public class ShopcartAdapter extends BaseAdapter
-{
+public class ShopcartAdapter extends BaseAdapter {
     private List<ShopcartModel> shopcartList;
     private Activity activity;
     private LayoutInflater layoutInflater;
@@ -93,10 +92,10 @@ public class ShopcartAdapter extends BaseAdapter
         public void setValues(final ShopcartModel item){
             Resources res=activity.getResources();
             name.setText(item.getName());
-            sale.setText(item.getSale());
-            good.setText(item.getGood());
-            price.setText(item.getPrice());
-            number.setText(item.getNumber());
+            sale.setText(Integer.toString(item.getSale()));
+            good.setText(Integer.toString(item.getGood()));
+            price.setText(Integer.toString(item.getPrice()));
+            number.setText(Integer.toString(item.getNumber()));
 
             ArrayList<String> picList = item.getImage();
 
@@ -107,9 +106,9 @@ public class ShopcartAdapter extends BaseAdapter
                 }
             });
 
-            if (!picList.isEmpty()){
+            //if (!picList.isEmpty()){
 
-            }
+            //}
         }
     }
 }

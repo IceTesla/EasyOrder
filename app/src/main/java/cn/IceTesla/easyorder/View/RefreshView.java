@@ -3,6 +3,7 @@ package cn.IceTesla.easyorder.View;
 import android.content.Context;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.widget.AbsListView;
@@ -112,7 +113,7 @@ public class RefreshView extends SwipeRefreshLayout {
      * 处理加载数据的逻辑
      */
     private void loadData() {
-        //System.out.println("加载数据...");
+        Log.i("1","加载数据...");
         if (mOnLoadListener != null) {
             // 设置加载状态，让布局显示出来
             setLoading(true);

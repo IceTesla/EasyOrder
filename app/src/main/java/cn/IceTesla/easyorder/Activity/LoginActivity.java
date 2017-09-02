@@ -1,5 +1,6 @@
 package cn.IceTesla.easyorder.Activity;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
                     break;
                 //登陆网络请求处理
                 case Status_Login:
+
                     break;
             }
         }
@@ -94,9 +96,11 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Message msg=mHandler.obtainMessage();
-                msg.what= Status_Login;
-                mHandler.sendMessage(msg);
+//                Message msg=mHandler.obtainMessage();
+//                msg.what= Status_Login;
+//                mHandler.sendMessage(msg);
+                Intent intent = new Intent(LoginActivity.this,ShopcartActivity.class);
+                LoginActivity.this.startActivity(intent);
             }
         });
     }
