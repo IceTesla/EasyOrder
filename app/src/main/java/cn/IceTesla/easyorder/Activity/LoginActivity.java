@@ -49,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,9 @@ public class LoginActivity extends AppCompatActivity {
 //                Message msg=mHandler.obtainMessage();
 //                msg.what= Status_Login;
 //                mHandler.sendMessage(msg);
-                Intent intent = new Intent(LoginActivity.this,ShopcartActivity.class);
+                text_login_ID.setText("");
+                text_login_Password.setText("");
+                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                 LoginActivity.this.startActivity(intent);
             }
         });

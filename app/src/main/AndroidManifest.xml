@@ -18,7 +18,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.ShopcartActivity" />
-        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.MainActivity" />
+        <activity android:name=".Activity.MenuActivity" />
+        <activity android:name=".Activity.TableActivity" />
+        <activity android:name=".Activity.BalanceActivity"></activity>
     </application>
 
 </manifest>

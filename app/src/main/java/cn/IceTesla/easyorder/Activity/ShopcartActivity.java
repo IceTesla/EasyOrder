@@ -60,7 +60,7 @@ public class ShopcartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopcart);
 
-        back = (TextView) findViewById(R.id.toolbar_back);
+        back = (TextView) findViewById(R.id.shopcart_toolbar).findViewById(R.id.toolbar_back);
         back.setText("＜返回");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +69,7 @@ public class ShopcartActivity extends AppCompatActivity {
             }
         });
 
-        title = (TextView) findViewById(R.id.toolbar_title);
+        title = (TextView) findViewById(R.id.shopcart_toolbar).findViewById(R.id.toolbar_title);
         title.setText("订单");
 
         refreshView = (RefreshView) findViewById(R.id.shopcart_swiperefresh_layout);

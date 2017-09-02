@@ -2,7 +2,7 @@
 <android:android.support.v7.widget.Toolbar
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/toolbar_layout"
+    android:id="@+id/mainActivity_toolbar_layout"
     android:background="@color/white"
     android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
@@ -11,26 +11,32 @@
     layout_width="match_parent"
     background="@color/white">
 
-    <TextView
-        android:id="@+id/toolbar_back"
-        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"/>
+    <LinearLayout
+        android:background="@drawable/circle_image"
+        android:layout_margin = "5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp">
+        <ImageView
+            android:id="@+id/mainActivity_toolbar_icon"
+            android:scaleType="centerCrop"
+            android:layout_gravity="start"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+    </LinearLayout>
+
 
     <TextView
-        android:id="@+id/toolbar_title"
+        android:id="@+id/mainActivity_toolbar_title"
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
     <TextView
-        android:id="@+id/toolbar_edit"
+        android:id="@+id/mainActivity_toolbar_edit"
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginRight="10dp"/>
+        android:layout_gravity="end"/>
 
 </android:android.support.v7.widget.Toolbar >
