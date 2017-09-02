@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import cn.IceTesla.easyorder.R;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView back;
     private TextView title, edit;
-    private TextView menu,table,balance;
+    private LinearLayout menu,table,balance;
 
     @Override
     public void onBackPressed() {
@@ -50,9 +51,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         title = (TextView) findViewById(R.id.mainActivity_toolbar_title);
-        title.setText("0桌");
+        title.setText("IceTesla");
 
-        menu= (TextView) findViewById(R.id.btn_main_menu);
+        edit = (TextView) findViewById(R.id.mainActivity_toolbar_edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        menu= (LinearLayout) findViewById(R.id.btn_main_menu);
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        table= (TextView) findViewById(R.id.btn_main_table);
+        table= (LinearLayout) findViewById(R.id.btn_main_table);
         table.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        balance= (TextView) findViewById(R.id.btn_main_balance);
+        balance= (LinearLayout) findViewById(R.id.btn_main_balance);
         balance.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

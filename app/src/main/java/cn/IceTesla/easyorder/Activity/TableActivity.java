@@ -12,6 +12,4 @@ public class TableActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table);
     }
-
-
 }

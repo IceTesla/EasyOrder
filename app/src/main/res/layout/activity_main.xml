@@ -19,7 +19,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/btn_main_menu"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -27,12 +27,25 @@
             android:layout_weight="1"
             android:background="@drawable/btn_mainactivity_menu"
             android:gravity="center"
-            android:text="点菜"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:src="@drawable/main_image_1" />
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="点菜"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/btn_main_table"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -40,12 +53,25 @@
             android:layout_weight="1"
             android:background="@drawable/btn_mainactivity_table"
             android:gravity="center"
-            android:text="桌位管理"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:orientation="horizontal">
 
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:src="@drawable/main_image_2" />
 
-        <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="桌位管理"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/btn_main_balance"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -53,9 +79,23 @@
             android:layout_weight="1"
             android:background="@drawable/btn_mainactivity_balance"
             android:gravity="center"
-            android:text="结账"
-            android:textColor="@color/white"
-            android:textSize="25dp" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:src="@drawable/main_image_3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="结账"
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
