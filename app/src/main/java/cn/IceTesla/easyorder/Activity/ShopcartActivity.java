@@ -1,29 +1,19 @@
 package cn.IceTesla.easyorder.Activity;
 
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cn.IceTesla.easyorder.Adapter.ShopcartAdapter;
 import cn.IceTesla.easyorder.Data.Model.ShopcartModel;
-import cn.IceTesla.easyorder.Network.NetRequest;
 import cn.IceTesla.easyorder.R;
 import cn.IceTesla.easyorder.View.RefreshView;
 
@@ -37,7 +27,6 @@ public class ShopcartActivity extends AppCompatActivity {
     private TextView back, title, edit;
     private ImageView reduce, plus;
     private List<ShopcartModel> mList = new ArrayList<>();
-    private NetRequest requestFragment;
     private ShopcartAdapter adapter;
     private static final int Status_Refresh = 903;
 
