@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Network;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -26,6 +27,11 @@ import org.json.JSONObject;
 import cn.IceTesla.easyorder.Network.Operation;
 import cn.IceTesla.easyorder.R;
 
+import static cn.IceTesla.easyorder.Network.Opcode.loginFailed;
+import static cn.IceTesla.easyorder.Network.Opcode.loginIn;
+import static cn.IceTesla.easyorder.Network.Opcode.loginSucceed;
+
+
 /**
  * Created by IceTesla on 2017/8/29.
  */
@@ -40,6 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView text_login_Password;
     private Button btn_login;
     public static String IP = "localhost";
+    public static String ID = "Administrator";
 
     private Handler mHandler = new Handler() {
         @Override
@@ -139,12 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new Thread(networkTask).start();
-//                text_login_ID.setText("");
-//                text_login_Password.setText("");
-//                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-//                LoginActivity.this.startActivity(intent);
             }
         });
         btn_login.setClickable(false);
@@ -175,21 +177,25 @@ public class LoginActivity extends AppCompatActivity {
         public void run() {
             // TODO
             // 在这里进行 http request.网络请求相关操作
-            Operation login = new Operation();
-
+            Operation login = new Operation(getApplicationContext());
+            String code = null;
             try {
                 String result = login.loginIn(text_login_ID.getText().toString(), text_login_Password.getText().toString());
                 JSONObject json = new JSONObject(result);
-                String code = json.getString("result");
-                if (code.equals("103")) {
+                code = json.getString("code");
+                if (code.equals(loginSucceed)) {
                     Message msg = mHandler.obtainMessage();
                     msg.what = Status_Login;
                     mHandler.sendMessage(msg);
                 }
-            } catch (JSONException e) {
+                else if(code.equals(loginFailed))
+                    Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_LONG);
+                
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            if(code == null)
+                Toast.makeText(getApplicationContext(),"未知错误",Toast.LENGTH_LONG);
         }
     };
 

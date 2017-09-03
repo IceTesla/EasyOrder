@@ -62,7 +62,6 @@
                 android:layout_gravity="center"
                 android:layout_weight="1.5"
                 android:gravity="center"
-                android:layout_marginTop="-80dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -82,6 +81,17 @@
                     android:textColor="@color/orange"
                     android:textSize="60dp" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_balance_balance"
+                android:layout_width="80dp"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:text="结账"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:background="@drawable/btn_mainactivity_balance"
+                android:layout_marginBottom="30dp"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

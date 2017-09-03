@@ -1,6 +1,7 @@
 package cn.IceTesla.easyorder.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.BitmapDrawable;
 import android.provider.ContactsContract;
@@ -16,12 +17,16 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.IceTesla.easyorder.Activity.ShopcartActivity;
 import cn.IceTesla.easyorder.Data.Model.ShopcartModel;
 import cn.IceTesla.easyorder.R;
+
+import static cn.IceTesla.easyorder.Activity.LoginActivity.cacheGet;
 
 /**
  * Created by IceTesla on 2017/8/30.
@@ -72,7 +77,8 @@ public class ShopcartAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
 
         ShopcartModel item = getItem(position);
-        viewHolder.setValues(item);
+
+        viewHolder.setValues(item, convertView.getContext());
 
         return convertView;
     }
@@ -101,6 +107,7 @@ public class ShopcartAdapter extends BaseAdapter {
         ImageView number_plus;
         TextView add;
         ImageView close;
+        String picUrl;
 
         int num;
 
@@ -117,22 +124,23 @@ public class ShopcartAdapter extends BaseAdapter {
             singleItem = (LinearLayout) view.findViewById(R.id.item_shopcart);
         }
 
-        public void setValues(final ShopcartModel item) {
+        public void setValues(final ShopcartModel item, Context context) {
             Resources res = activity.getResources();
             name.setText(item.getName());
-            sale.setText(Integer.toString(item.getSale()));
-            good.setText(Integer.toString(item.getGood()));
-            price.setText(Integer.toString(item.getPrice()));
-            number.setText(Integer.toString(item.getNumber()));
-
-            ArrayList<String> picList = item.getImage();
+            sale.setText(item.getSale());
+            good.setText(item.getGood());
+            price.setText(item.getPrice());
+            if(item.getNumber()==null)
+                item.setNumber("0");
+            number.setText(item.getNumber());
 
             reduce.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (item.getNumber() > 0) {
-                        item.setNumber(item.getNumber() - 1);
-                        number.setText(Integer.toString(item.getNumber()));
+                    if (Integer.valueOf(item.getNumber()) > 0) {
+                        num = Integer.valueOf(item.getNumber());
+                        item.setNumber(String.valueOf(num - 1));
+                        number.setText(item.getNumber());
                     }
                 }
             });
@@ -140,8 +148,9 @@ public class ShopcartAdapter extends BaseAdapter {
             plus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    item.setNumber(item.getNumber() + 1);
-                    number.setText(Integer.toString(item.getNumber()));
+                    num = Integer.valueOf(item.getNumber());
+                    item.setNumber(String.valueOf(num + 1));
+                    number.setText(item.getNumber());
                 }
             });
 
@@ -153,7 +162,26 @@ public class ShopcartAdapter extends BaseAdapter {
                     backgroundAlpha(0.5f);
                 }
             });
+
+            picUrl = item.getImage();
+
+            String temp = cacheGet("IP", context);
+            picUrl = "http://" + temp + ":8080/ServerBeta3/" + picUrl;
+
+            if (!picUrl.isEmpty()) {
+                try {
+                    Glide.with(activity)
+                            .load(picUrl)
+                            .centerCrop()
+                            .dontAnimate()
+                            .error(R.drawable.loading_error)
+                            .into(image);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
 
         void initpopupView(View view, final ShopcartModel item) {
             popupView = activity.getLayoutInflater().inflate(R.layout.item_add_shopcart_layout, null);
@@ -180,6 +208,7 @@ public class ShopcartAdapter extends BaseAdapter {
             add = (TextView) popupView.findViewById(R.id.btn_add_shopcart_add);
             close = (ImageView) popupView.findViewById(R.id.btn_add_shopcart_close);
 
+            image_add.setImageDrawable(image.getDrawable());
             num = Integer.valueOf(number.getText().toString());
             name_add.setText(name.getText());
             sale_add.setText(sale.getText());
@@ -209,7 +238,7 @@ public class ShopcartAdapter extends BaseAdapter {
             add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    item.setNumber(num);
+                    item.setNumber(String.valueOf(num));
                     item.setNote(note_add.getText().toString());
                     number.setText(Integer.toString(num));
                     mPopupWindow.dismiss();
@@ -237,7 +266,5 @@ public class ShopcartAdapter extends BaseAdapter {
             activity.getWindow().setAttributes(lp);
         }
     }
-
-
 }
 

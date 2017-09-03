@@ -9,12 +9,23 @@ import java.util.ArrayList;
 
 public class ShopcartModel implements Serializable {
     private String name;
-    private ArrayList image;
-    private int sale;
-    private int good;
-    private int price;
-    private int number;
+    private String image;
+    private String sale;
+    private String good;
+    private String price;
+    private String number;
     private String note;
+    private String ID;
+
+    public String getFoodID() {
+        return foodID;
+    }
+
+    public void setFoodID(String foodID) {
+        this.foodID = foodID;
+    }
+
+    private String foodID;
 
     public String getNote() {
         return note;
@@ -33,43 +44,43 @@ public class ShopcartModel implements Serializable {
         this.name = name;
     }
 
-    public ArrayList getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(ArrayList image) {
+    public void setImage(String image) {
         this.image = image;
     }
 
-    public int getSale() {
+    public String getSale() {
         return sale;
     }
 
-    public void setSale(int sale) {
+    public void setSale(String sale) {
         this.sale = sale;
     }
 
-    public int getGood() {
+    public String getGood() {
         return good;
     }
 
-    public void setGood(int good) {
+    public void setGood(String good) {
         this.good = good;
     }
 
-    public int getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }
